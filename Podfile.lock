@@ -1,0 +1,13 @@
+PODS:
+  - Alamofire (3.3.1)
+  - SwiftSpinner (0.9.5)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.3)
+  - SwiftSpinner
+
+SPEC CHECKSUMS:
+  Alamofire: 369bc67b6f5ac33ded3648d7bd21c5bfb91c2ecc
+  SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce
+
+COCOAPODS: 0.39.0

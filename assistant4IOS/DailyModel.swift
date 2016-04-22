@@ -9,10 +9,13 @@
 import UIKit
 
 class DailyModel: NSObject {
+    var id: Int = 0
     var content: String = ""
     var startDt: String = ""
     var endDt: String = ""
-    init(content: String, startDt: String, endDt: String) {
+    var isNotFinished: Bool = false;
+    init(id: Int, content: String, startDt: String, endDt: String) {
+        self.id = id
         self.content = content
         self.startDt = startDt
         self.endDt = endDt

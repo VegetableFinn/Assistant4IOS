@@ -7,12 +7,23 @@
 //
 
 import UIKit
+import Alamofire
+
+protocol DailyTableViewRefreshProtocol: NSObjectProtocol {
+    func refreshData()
+}
 
 class DailyTableViewCell: UITableViewCell {
+    
+    weak var delegate: DailyTableViewRefreshProtocol?
+    
 
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
+    
+    var dailyModel : DailyModel? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -23,5 +34,4 @@ class DailyTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
 }
