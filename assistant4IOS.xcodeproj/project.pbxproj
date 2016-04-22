@@ -14,6 +14,9 @@
 		43691E1E1CCA1ACE0021DD56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 43691E1C1CCA1ACE0021DD56 /* LaunchScreen.storyboard */; };
 		43691E291CCA1ACF0021DD56 /* assistant4IOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43691E281CCA1ACF0021DD56 /* assistant4IOSTests.swift */; };
 		43691E341CCA1ACF0021DD56 /* assistant4IOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43691E331CCA1ACF0021DD56 /* assistant4IOSUITests.swift */; };
+		43691E421CCA1BFF0021DD56 /* DailyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43691E411CCA1BFF0021DD56 /* DailyTableViewController.swift */; };
+		43691E441CCA1C1D0021DD56 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43691E431CCA1C1D0021DD56 /* DailyTableViewCell.swift */; };
+		43691E461CCA1CE90021DD56 /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43691E451CCA1CE90021DD56 /* DailyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		43691E2F1CCA1ACF0021DD56 /* assistant4IOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = assistant4IOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		43691E331CCA1ACF0021DD56 /* assistant4IOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = assistant4IOSUITests.swift; sourceTree = "<group>"; };
 		43691E351CCA1ACF0021DD56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		43691E411CCA1BFF0021DD56 /* DailyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTableViewController.swift; sourceTree = "<group>"; };
+		43691E431CCA1C1D0021DD56 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
+		43691E451CCA1CE90021DD56 /* DailyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +109,9 @@
 				43691E1A1CCA1ACE0021DD56 /* Assets.xcassets */,
 				43691E1C1CCA1ACE0021DD56 /* LaunchScreen.storyboard */,
 				43691E1F1CCA1ACE0021DD56 /* Info.plist */,
+				43691E411CCA1BFF0021DD56 /* DailyTableViewController.swift */,
+				43691E431CCA1C1D0021DD56 /* DailyTableViewCell.swift */,
+				43691E451CCA1CE90021DD56 /* DailyModel.swift */,
 			);
 			path = assistant4IOS;
 			sourceTree = "<group>";
@@ -260,7 +269,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				43691E161CCA1ACE0021DD56 /* ViewController.swift in Sources */,
+				43691E461CCA1CE90021DD56 /* DailyModel.swift in Sources */,
+				43691E441CCA1C1D0021DD56 /* DailyTableViewCell.swift in Sources */,
 				43691E141CCA1ACE0021DD56 /* AppDelegate.swift in Sources */,
+				43691E421CCA1BFF0021DD56 /* DailyTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
