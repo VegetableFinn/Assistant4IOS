@@ -51,10 +51,17 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBW-3o-fL8">
+                                            <rect key="frame" x="280" y="65" width="93" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="contentLabel" destination="v0o-79-FUG" id="N1s-BQ-eyS"/>
+                                    <outlet property="durationLabel" destination="rBW-3o-fL8" id="Smp-RX-d9g"/>
                                     <outlet property="endLabel" destination="5Wa-l2-0Jf" id="TaY-bN-bSh"/>
                                     <outlet property="startLabel" destination="grv-A1-MQW" id="W5r-XE-afW"/>
                                 </connections>

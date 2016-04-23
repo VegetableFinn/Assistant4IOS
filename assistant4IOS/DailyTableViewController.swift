@@ -42,6 +42,7 @@ class DailyTableViewController: UITableViewController {
     func refreshData(){
         dailyList = [DailyModel]()
         SwiftSpinner.show("Connecting to satellite...")
+        //104.224.154.89
         Alamofire.request(.GET, "http://104.224.154.89/daily/getRecent2Days.json", parameters: nil)
             .responseJSON { response in
                 //                print(response.request)  // original URL request
@@ -50,8 +51,7 @@ class DailyTableViewController: UITableViewController {
                 //                print(response.result)   // result of response serialization
                 
                 if let JSON = response.result.value {
-                    //                    print("JSON: \(JSON)")
-//                    print(JSON.count)
+//                                        print("JSON: \(JSON)")
                     for count in 0 ..< JSON.count{
                         
                         let id = JSON[count]["id"] as! Int
@@ -59,8 +59,8 @@ class DailyTableViewController: UITableViewController {
                         let startDt = JSON[count]["startDt"] as! String
                         let endDt =  (JSON[count]["endDt"] is NSNull) ? "" : JSON[count]["endDt"] as! String
                         let catagory = JSON[count]["catagory"] as! String
-                        
-                        let dailyModel = DailyModel(id: id, content: content, startDt: startDt, endDt: endDt, catagory: catagory)
+                        let duration = (JSON[count]["durationDt"] is NSNull) ? "" : JSON[count]["durationDt"] as! String
+                        let dailyModel = DailyModel(id: id, content: content, startDt: startDt, endDt: endDt, catagory: catagory, duration:duration)
                         if(JSON[count]["duration"] as! Int == 1 && endDt == ""){
                             dailyModel.isNotFinished = true;
                         }
@@ -100,7 +100,8 @@ class DailyTableViewController: UITableViewController {
         cell.startLabel?.text = daily.startDt
         cell.endLabel?.text = daily.endDt
         cell.dailyModel = daily
-        let catagoryLabel = UILabel(frame: CGRect(x: 280, y: 40, width: 70, height: 20))
+        cell.durationLabel?.text = daily.duration
+        let catagoryLabel = UILabel(frame: CGRect(x: 280, y: 41, width: 70, height: 20))
         catagoryLabel.layer.backgroundColor = UIColor.blackColor().CGColor
         catagoryLabel.textColor = UIColor.whiteColor()
         catagoryLabel.layer.cornerRadius = 5

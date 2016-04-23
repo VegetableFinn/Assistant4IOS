@@ -15,11 +15,13 @@ class DailyModel: NSObject {
     var endDt: String = ""
     var isNotFinished: Bool = false;
     var catagory: String = ""
-    init(id: Int, content: String, startDt: String, endDt: String, catagory: String) {
+    var duration: String  = ""
+    init(id: Int, content: String, startDt: String, endDt: String, catagory: String, duration: String) {
         self.id = id
         self.content = content
         self.startDt = startDt
         self.endDt = endDt
         self.catagory = catagory
+        self.duration = duration
     }
 }
