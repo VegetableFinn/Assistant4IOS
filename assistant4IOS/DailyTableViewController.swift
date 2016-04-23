@@ -20,16 +20,11 @@ class DailyTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        addPassAction()
-        
         //添加刷新
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(DailyTableViewController.refreshData), forControlEvents: UIControlEvents.ValueChanged)
         refreshControl.attributedTitle = NSAttributedString(string: "我就是这么跳")
         self.refreshControl = refreshControl
-        
-    
-        refreshData()
         
         
     }
@@ -39,29 +34,54 @@ class DailyTableViewController: UITableViewController {
         refreshData()
     }
     
+    func login(){
+        Alamofire.request(.GET, "http://104.224.154.89/login.html?loginAccount=abc", parameters: ["foo": "bar"])
+            .responseJSON { response in
+                self.refreshData()
+        }
+    }
+    
+    func needLogin(){
+        if(touchIdCheck()){
+            login();
+            
+        }else{
+            
+        }
+    }
+    
+    func asyncLogin(){
+        login();
+    }
+    
+    
     func refreshData(){
         dailyList = [DailyModel]()
         SwiftSpinner.show("Connecting to satellite...")
         //104.224.154.89
         Alamofire.request(.GET, "http://104.224.154.89/daily/getRecent2Days.json", parameters: nil)
             .responseJSON { response in
-                //                print(response.request)  // original URL request
-                //                print(response.response) // URL response
-                //                print(response.data)     // server data
-                //                print(response.result)   // result of response serialization
-                
                 if let JSON = response.result.value {
 //                                        print("JSON: \(JSON)")
-                    for count in 0 ..< JSON.count{
+                    let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String
+                    if errorMessage == "LOGIN_REQUIRED" {
+                        self.needLogin()
+                        return
+                    }
+                    let models = JSON["dailyModels"] as! NSArray
+                    
+                    
+                    for count in 0 ..< models.count{
+                        let model = models[count]
                         
-                        let id = JSON[count]["id"] as! Int
-                        let content = JSON[count]["content"] as! String
-                        let startDt = JSON[count]["startDt"] as! String
-                        let endDt =  (JSON[count]["endDt"] is NSNull) ? "" : JSON[count]["endDt"] as! String
-                        let catagory = JSON[count]["catagory"] as! String
-                        let duration = (JSON[count]["durationDt"] is NSNull) ? "" : JSON[count]["durationDt"] as! String
+                        let id = model["id"] as! Int
+                        let content = model["content"] as! String
+                        let startDt = model["startDt"] as! String
+                        let endDt =  (model["endDt"] is NSNull) ? "" : model["endDt"] as! String
+                        let catagory = model["catagory"] as! String
+                        let duration = (model["durationDt"] is NSNull) ? "" : model["durationDt"] as! String
                         let dailyModel = DailyModel(id: id, content: content, startDt: startDt, endDt: endDt, catagory: catagory, duration:duration)
-                        if(JSON[count]["duration"] as! Int == 1 && endDt == ""){
+                        if(model["duration"] as! Int == 1 && endDt == ""){
                             dailyModel.isNotFinished = true;
                         }
                         self.dailyList.append(dailyModel)
@@ -118,7 +138,6 @@ class DailyTableViewController: UITableViewController {
         catagoryLabel.textAlignment = NSTextAlignment.Center
         
         cell.addSubview(catagoryLabel)
-//        cell.delegate = self
         return cell
     }
     
@@ -161,10 +180,12 @@ class DailyTableViewController: UITableViewController {
         
         return returnActions
     }
-//    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-//        performSegueWithIdentifier("daily", sender: AnyObject?)
-//    }
-//    
+    
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        performSegueWithIdentifier("showEditPage", sender: self)
+    }
+    
     
     
     func finishDaily(model: DailyModel) {
@@ -192,34 +213,46 @@ class DailyTableViewController: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+      // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        //showEditPage
+        if (segue.identifier == "showEditPage") {
+            // pass data to next view
+            let viewController:DailyEditViewController = segue.destinationViewController as! DailyEditViewController
+            let indexPath = self.tableView.indexPathForSelectedRow!
+//            viewController.pinCode = self.exams[indexPath.row]
+            viewController.type = dailyList[indexPath.row].catagory
+            viewController.content = dailyList[indexPath.row].content
+            viewController.id = dailyList[indexPath.row].id
+        }
     }
-    */
     
     
-
-    func addPassAction(){
-        print("add pass action")
+    func touchIdCheck() -> Bool{
         let laContext = LAContext()
         var authError : NSError?
-        let errorReason = "keep things secret"
+        let errorReason = "Mr.Finn 身份鉴别"
+        var result: Bool = false
         if laContext.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &authError){
             laContext.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: errorReason, reply: {
                 (success, error) in
                 if success {
-                    print("succeed")
+                    self.asyncLogin()
+                    result = true
                 }
                 else{
-                    print("failed")
+//                    print("failed")
+                    result = false
                 }
             })
+        }else{
+            result = true
         }
-       
+        return result
+    
     }
+    
+    
 }

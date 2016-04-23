@@ -9,6 +9,8 @@
 import UIKit
 import SwiftSpinner
 import Alamofire
+import LocalAuthentication
+
 
 //protocol DailyTableViewRefreshProtocol: NSObjectProtocol {
 //    func refreshData()
@@ -42,7 +44,7 @@ class DailyAddViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         type = pickerDataSource[0]
         
-        let radioButton = SSRadioButton(frame: CGRect(x: 0, y: 570, width: 200, height: 30 ))
+        let radioButton = SSRadioButton(frame: CGRect(x: 0, y: 344, width: 200, height: 30 ))
         radioButton.circleRadius = 8
         radioButton.circleColor = UIColor.blackColor()
         radioButton.setTitle("是否是持续性事件？", forState: .Normal)
@@ -62,6 +64,50 @@ class DailyAddViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // Dispose of any resources that can be recreated.
     }
     
+    func touchIdCheck() -> Bool{
+        let laContext = LAContext()
+        var authError : NSError?
+        let errorReason = "Mr.Finn 身份鉴别"
+        var result: Bool = false
+        if laContext.canEvaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, error: &authError){
+            laContext.evaluatePolicy(LAPolicy.DeviceOwnerAuthenticationWithBiometrics, localizedReason: errorReason, reply: {
+                (success, error) in
+                if success {
+                    self.asyncLogin()
+                    result = true
+                }
+                else{
+                    //                    print("failed")
+                    result = false
+                }
+            })
+        }else{
+            result = true
+        }
+        return result
+        
+    }
+    
+    func login(){
+        Alamofire.request(.GET, "http://104.224.154.89/login.html?loginAccount=abc", parameters: ["foo": "bar"])
+            .responseJSON { response in
+                SwiftSpinner.hide()
+        }
+    }
+    
+    func needLogin(){
+        if(touchIdCheck()){
+            login();
+            
+        }else{
+            
+        }
+    }
+    
+    func asyncLogin(){
+        login();
+    }
+    
     func saveButtonClicked(sender: UIBarButtonItem){
         
         SwiftSpinner.show("Connecting to satellite...")
@@ -71,11 +117,24 @@ class DailyAddViewController: UIViewController, UIPickerViewDataSource, UIPicker
         //104.224.154.89
         Alamofire.request(.GET, "http://104.224.154.89/daily/addDaily.html", parameters: parameters as! [String : String])
             .responseJSON { response in
-                SwiftSpinner.hide()
-                self.navigationController?.popViewControllerAnimated(true)
+                
+//                SwiftSpinner.hide()
+//                self.navigationController?.popViewControllerAnimated(true)
 //                if(self.delegate != nil){
 //                    self.delegate?.refreshData()
 //                }
+                
+                
+                if let JSON = response.result.value {
+                    //                                        print("JSON: \(JSON)")
+                    let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String
+                    if errorMessage == "LOGIN_REQUIRED" {
+                        self.needLogin()
+                        return
+                    }
+                    SwiftSpinner.hide()
+                    self.navigationController?.popViewControllerAnimated(true)
+                }
         }
     }
     
