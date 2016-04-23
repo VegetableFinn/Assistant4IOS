@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BBEFD3DEAD2EDF3414E4050160BA4DC29760FF60",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "BBEFD3DEAD2EDF3414E4050160BA4DC29760FF60" : 0,
+    "6823CDA85E7DF951100A70A87405A29CAB9B5641" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "670A4C39-3D42-40CD-80C5-B98E71117AD3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "BBEFD3DEAD2EDF3414E4050160BA4DC29760FF60" : "assistant4IOS\/",
+    "6823CDA85E7DF951100A70A87405A29CAB9B5641" : "SSRadioButtonsController\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "assistant4IOS",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "assistant4IOS.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/shamasshahid\/SSRadioButtonsController.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6823CDA85E7DF951100A70A87405A29CAB9B5641"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/VegetableFinn\/Assistant4IOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BBEFD3DEAD2EDF3414E4050160BA4DC29760FF60"
+    }
+  ]
+}

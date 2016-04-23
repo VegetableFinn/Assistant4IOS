@@ -9,14 +9,9 @@
 import UIKit
 import Alamofire
 
-protocol DailyTableViewRefreshProtocol: NSObjectProtocol {
-    func refreshData()
-}
+
 
 class DailyTableViewCell: UITableViewCell {
-    
-    weak var delegate: DailyTableViewRefreshProtocol?
-    
 
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var startLabel: UILabel!

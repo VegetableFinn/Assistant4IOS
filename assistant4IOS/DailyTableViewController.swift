@@ -34,6 +34,11 @@ class DailyTableViewController: UITableViewController {
         
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        refreshData()
+    }
+    
     func refreshData(){
         dailyList = [DailyModel]()
         SwiftSpinner.show("Connecting to satellite...")
@@ -53,9 +58,9 @@ class DailyTableViewController: UITableViewController {
                         let content = JSON[count]["content"] as! String
                         let startDt = JSON[count]["startDt"] as! String
                         let endDt =  (JSON[count]["endDt"] is NSNull) ? "" : JSON[count]["endDt"] as! String
+                        let catagory = JSON[count]["catagory"] as! String
                         
-                        
-                        let dailyModel = DailyModel(id: id, content: content, startDt: startDt, endDt: endDt)
+                        let dailyModel = DailyModel(id: id, content: content, startDt: startDt, endDt: endDt, catagory: catagory)
                         if(JSON[count]["duration"] as! Int == 1 && endDt == ""){
                             dailyModel.isNotFinished = true;
                         }
@@ -95,6 +100,23 @@ class DailyTableViewController: UITableViewController {
         cell.startLabel?.text = daily.startDt
         cell.endLabel?.text = daily.endDt
         cell.dailyModel = daily
+        let catagoryLabel = UILabel(frame: CGRect(x: 280, y: 40, width: 70, height: 20))
+        catagoryLabel.layer.backgroundColor = UIColor.blackColor().CGColor
+        catagoryLabel.textColor = UIColor.whiteColor()
+        catagoryLabel.layer.cornerRadius = 5
+        catagoryLabel.text = daily.catagory
+        if(daily.catagory == "Coding"){
+            catagoryLabel.layer.backgroundColor = UIColor.greenColor().CGColor
+            catagoryLabel.textColor = UIColor.whiteColor()
+        }else  if(daily.catagory == "Relaxing"){
+            catagoryLabel.layer.backgroundColor = UIColor.redColor().CGColor
+            catagoryLabel.textColor = UIColor.whiteColor()
+        }
+        
+        catagoryLabel.font = catagoryLabel.font.fontWithSize(12)
+        catagoryLabel.textAlignment = NSTextAlignment.Center
+        
+        cell.addSubview(catagoryLabel)
 //        cell.delegate = self
         return cell
     }

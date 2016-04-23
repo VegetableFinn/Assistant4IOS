@@ -14,10 +14,12 @@ class DailyModel: NSObject {
     var startDt: String = ""
     var endDt: String = ""
     var isNotFinished: Bool = false;
-    init(id: Int, content: String, startDt: String, endDt: String) {
+    var catagory: String = ""
+    init(id: Int, content: String, startDt: String, endDt: String, catagory: String) {
         self.id = id
         self.content = content
         self.startDt = startDt
         self.endDt = endDt
+        self.catagory = catagory
     }
 }
