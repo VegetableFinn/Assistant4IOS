@@ -146,12 +146,8 @@ class DailyTableViewController: UITableViewController {
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        let thisModel = dailyList[indexPath.row]
-        if(thisModel.isNotFinished){
-            return true
-        }
-
-        return false
+        return true
+       
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
@@ -168,11 +164,12 @@ class DailyTableViewController: UITableViewController {
             returnActions.append(complete)
         }
         
-//        let favorite = UITableViewRowAction(style: .Normal, title: "Favorite") { action, index in
-//            print("favorite button tapped")
-//        }
-//        favorite.backgroundColor = UIColor.orangeColor()
-//        
+        let delete = UITableViewRowAction(style: .Normal, title: "删除") { action, index in
+            self.deleteDaily(thisModel)
+        }
+        delete.backgroundColor = UIColor.redColor()
+        returnActions.append(delete)
+//
 //        let share = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
 //            print("share button tapped")
 //        }
@@ -191,6 +188,15 @@ class DailyTableViewController: UITableViewController {
     func finishDaily(model: DailyModel) {
         SwiftSpinner.show("Connecting to satellite...")
         Alamofire.request(.GET, "http://104.224.154.89/daily/endDaily.html?id="+String(model.id), parameters: ["foo": "bar"])
+            .responseJSON { response in
+                self.refreshData()
+                SwiftSpinner.hide()
+        }
+    }
+    
+    func deleteDaily(model: DailyModel){
+        SwiftSpinner.show("Connecting to satellite...")
+        Alamofire.request(.GET, "http://104.224.154.89/daily/deleteDaily.html?id="+String(model.id), parameters: ["foo": "bar"])
             .responseJSON { response in
                 self.refreshData()
                 SwiftSpinner.hide()
