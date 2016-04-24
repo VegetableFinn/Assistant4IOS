@@ -23,7 +23,7 @@ class DailyAddViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var typePicker: UIPickerView!
     @IBOutlet weak var contextTextView: UITextView!
     
-    var pickerDataSource = ["Coding", "Outing", "Relaxing", "Execising", "Studying"];
+    var pickerDataSource = ["Coding", "Outing", "Relaxing", "Exercising", "Studying", "Sleeping"];
     
     var radioButtonController = SSRadioButtonsController()
     
