@@ -42,6 +42,10 @@ class MainUITabBarController: UITabBarController, UITabBarControllerDelegate {
             let dailyTableViewController = navController.viewControllers[0] as! DailyTableViewController
             dailyTableViewController.refreshData()
         }
+        if(self.selectedIndex == 0 && beforeIndex == 0){
+            let tableController = viewController as! TodoTableViewController
+            tableController.refreshToDoData()
+        }
     }
 
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool{
