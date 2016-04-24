@@ -22,6 +22,7 @@
 		43691E441CCA1C1D0021DD56 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43691E431CCA1C1D0021DD56 /* DailyTableViewCell.swift */; };
 		43691E461CCA1CE90021DD56 /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43691E451CCA1CE90021DD56 /* DailyModel.swift */; };
 		43C2BE9F1CCBB28800D664C4 /* DailyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2BE9E1CCBB28800D664C4 /* DailyEditViewController.swift */; };
+		43D4CB611CCCE6D3004B1FCD /* MainUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D4CB601CCCE6D3004B1FCD /* MainUITabBarController.swift */; };
 		70CFF8D0DC05D31D4E35CDB4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022D4481C5F94CD92301EB79 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,7 +49,7 @@
 		4308E1F41CCB158C00E13C75 /* SSRadioButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSRadioButtonsController.swift; path = ../../SSRadioButtonsController/SSRadioButtonController/SSRadioButtonsController.swift; sourceTree = "<group>"; };
 		4308E1F71CCB3E7D00E13C75 /* OneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneViewController.swift; sourceTree = "<group>"; };
 		43647C1F1CCA76630026C831 /* DailyAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyAddViewController.swift; sourceTree = "<group>"; };
-		43691E101CCA1ACE0021DD56 /* assistant4IOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = assistant4IOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		43691E101CCA1ACE0021DD56 /* 何凡.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "何凡.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		43691E131CCA1ACE0021DD56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		43691E151CCA1ACE0021DD56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		43691E181CCA1ACE0021DD56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -65,6 +66,7 @@
 		43691E431CCA1C1D0021DD56 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		43691E451CCA1CE90021DD56 /* DailyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
 		43C2BE9E1CCBB28800D664C4 /* DailyEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyEditViewController.swift; sourceTree = "<group>"; };
+		43D4CB601CCCE6D3004B1FCD /* MainUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainUITabBarController.swift; sourceTree = "<group>"; };
 		A16CC351600553DDCE6AD3C6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DF9F87E9E68752F68D727FD6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -128,7 +130,7 @@
 		43691E111CCA1ACE0021DD56 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				43691E101CCA1ACE0021DD56 /* assistant4IOS.app */,
+				43691E101CCA1ACE0021DD56 /* 何凡.app */,
 				43691E241CCA1ACF0021DD56 /* assistant4IOSTests.xctest */,
 				43691E2F1CCA1ACF0021DD56 /* assistant4IOSUITests.xctest */,
 			);
@@ -151,6 +153,7 @@
 				43647C1F1CCA76630026C831 /* DailyAddViewController.swift */,
 				4308E1F71CCB3E7D00E13C75 /* OneViewController.swift */,
 				43C2BE9E1CCBB28800D664C4 /* DailyEditViewController.swift */,
+				43D4CB601CCCE6D3004B1FCD /* MainUITabBarController.swift */,
 			);
 			path = assistant4IOS;
 			sourceTree = "<group>";
@@ -201,7 +204,7 @@
 			);
 			name = assistant4IOS;
 			productName = assistant4IOS;
-			productReference = 43691E101CCA1ACE0021DD56 /* assistant4IOS.app */;
+			productReference = 43691E101CCA1ACE0021DD56 /* 何凡.app */;
 			productType = "com.apple.product-type.application";
 		};
 		43691E231CCA1ACF0021DD56 /* assistant4IOSTests */ = {
@@ -376,6 +379,7 @@
 				43691E441CCA1C1D0021DD56 /* DailyTableViewCell.swift in Sources */,
 				43691E141CCA1ACE0021DD56 /* AppDelegate.swift in Sources */,
 				43691E421CCA1BFF0021DD56 /* DailyTableViewController.swift in Sources */,
+				43D4CB611CCCE6D3004B1FCD /* MainUITabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -521,7 +525,7 @@
 				INFOPLIST_FILE = assistant4IOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hefan.assistant4IOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "何凡";
 			};
 			name = Debug;
 		};
@@ -533,7 +537,7 @@
 				INFOPLIST_FILE = assistant4IOS/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.hefan.assistant4IOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "何凡";
 			};
 			name = Release;
 		};

@@ -14,24 +14,25 @@ import LocalAuthentication
 class DailyTableViewController: UITableViewController {
     
     @IBOutlet var dailyTableView: UITableView!
-    
     var dailyList = [DailyModel]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //添加刷新
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(DailyTableViewController.refreshData), forControlEvents: UIControlEvents.ValueChanged)
-        refreshControl.attributedTitle = NSAttributedString(string: "我就是这么跳")
-        self.refreshControl = refreshControl
+        //        //添加刷新
+        //        let refreshControl = UIRefreshControl()
+        //        refreshControl.addTarget(self, action: #selector(DailyTableViewController.refreshData), forControlEvents: UIControlEvents.ValueChanged)
+        //        refreshControl.attributedTitle = NSAttributedString(string: "我就是这么跳")
+        //        self.refreshControl = refreshControl
         
+        refreshData()
         
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        refreshData()
+        
     }
     
     func login(){
@@ -54,9 +55,8 @@ class DailyTableViewController: UITableViewController {
         login();
     }
     
-    
     func refreshData(){
-        dailyList = [DailyModel]()
+        self.dailyList = [DailyModel]()
         SwiftSpinner.show("Connecting to satellite...")
         //104.224.154.89
         Alamofire.request(.GET, "http://104.224.154.89/daily/getRecent2Days.json", parameters: nil)
@@ -88,9 +88,9 @@ class DailyTableViewController: UITableViewController {
                     }
                 }
                 self.dailyTableView.reloadData()
-                self.refreshControl?.endRefreshing()
                 SwiftSpinner.hide()
         }
+        
     }
     
     
@@ -115,6 +115,12 @@ class DailyTableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("dailyCell", forIndexPath: indexPath) as! DailyTableViewCell
+        
+        if(indexPath.row >= dailyList.count){
+            return cell
+        }
+        
+        
         let daily = dailyList[indexPath.row]
         cell.contentLabel?.text = daily.content
         
@@ -131,40 +137,12 @@ class DailyTableViewController: UITableViewController {
             let indexEndDtEnd = endDtText.endIndex.advancedBy(-3)
             endDtText = endDtText.substringToIndex(indexEndDtEnd)
             cell.endLabel?.text = endDtText
-            
+        }else{
+            cell.endLabel?.text = ""
         }
         
         cell.dailyModel = daily
         cell.durationLabel?.text = daily.duration
-        
-        
-        //        let catagoryLabel = UILabel(frame: CGRect(x: 25, y: 15, width: 50, height: 50))
-        //        catagoryLabel.layer.backgroundColor = UIColor.blackColor().CGColor
-        //        catagoryLabel.textColor = UIColor.whiteColor()
-        //        catagoryLabel.layer.cornerRadius = 5
-        //        let cataIndex = daily.catagory.startIndex.advancedBy(1)
-        //        catagoryLabel.text = daily.catagory.substringToIndex(cataIndex)
-        //        if(daily.catagory == "Coding"){
-        //            catagoryLabel.layer.backgroundColor = UIColor(red: CGFloat(0/255.0), green: CGFloat(110/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0)).CGColor
-        //            catagoryLabel.textColor = UIColor.whiteColor()
-        //        }else if(daily.catagory == "Relaxing"){
-        //            catagoryLabel.layer.backgroundColor = UIColor(red: CGFloat(174/255.0), green: CGFloat(238/255.0), blue: CGFloat(238/255.0), alpha: CGFloat(1.0)).CGColor
-        //            catagoryLabel.textColor = UIColor.whiteColor()
-        //        }else if(daily.catagory == "Sleeping"){
-        //            catagoryLabel.layer.backgroundColor = UIColor.purpleColor().CGColor
-        //            catagoryLabel.textColor = UIColor.whiteColor()
-        //        }else if(daily.catagory == "Exercising"){
-        //            catagoryLabel.layer.backgroundColor = UIColor.grayColor().CGColor
-        //            catagoryLabel.textColor = UIColor.whiteColor()
-        //        }else if(daily.catagory == "Studying"){
-        //            catagoryLabel.layer.backgroundColor = UIColor.orangeColor().CGColor
-        //            catagoryLabel.textColor = UIColor.whiteColor()
-        //        }
-        //
-        //        catagoryLabel.font = catagoryLabel.font.fontWithSize(30)
-        //        catagoryLabel.textAlignment = NSTextAlignment.Center
-        //
-        //        cell.addSubview(catagoryLabel)
         
         
         if(daily.catagory == "Coding"){
@@ -230,7 +208,6 @@ class DailyTableViewController: UITableViewController {
         Alamofire.request(.GET, "http://104.224.154.89/daily/endDaily.html?id="+String(model.id), parameters: ["foo": "bar"])
             .responseJSON { response in
                 self.refreshData()
-                SwiftSpinner.hide()
         }
     }
     
@@ -239,7 +216,6 @@ class DailyTableViewController: UITableViewController {
         Alamofire.request(.GET, "http://104.224.154.89/daily/deleteDaily.html?id="+String(model.id), parameters: ["foo": "bar"])
             .responseJSON { response in
                 self.refreshData()
-                SwiftSpinner.hide()
         }
     }
     
@@ -272,6 +248,13 @@ class DailyTableViewController: UITableViewController {
             viewController.type = dailyList[indexPath.row].catagory
             viewController.content = dailyList[indexPath.row].content
             viewController.id = dailyList[indexPath.row].id
+            viewController.tableViewController = self
+        }else if (segue.identifier == "showAddDailyPage") {
+            // pass data to next view
+            let viewController:DailyAddViewController = segue.destinationViewController as! DailyAddViewController
+            //            let indexPath = self.tableView.indexPathForSelectedRow!
+            //            viewController.pinCode = self.exams[indexPath.row]
+            viewController.tableViewController = self
         }
     }
     
@@ -299,6 +282,11 @@ class DailyTableViewController: UITableViewController {
         return result
         
     }
-    
+//    
+//    func synced(lock: AnyObject, closure: () -> ()) {
+//        objc_sync_enter(lock)
+//        closure()
+//        objc_sync_exit(lock)
+//    }
     
 }

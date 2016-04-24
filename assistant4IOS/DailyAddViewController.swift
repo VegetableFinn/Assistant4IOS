@@ -23,6 +23,8 @@ class DailyAddViewController: UIViewController, UIPickerViewDataSource, UIPicker
     @IBOutlet weak var typePicker: UIPickerView!
     @IBOutlet weak var contextTextView: UITextView!
     
+    var tableViewController : DailyTableViewController?
+    
     var pickerDataSource = ["Coding", "Outing", "Relaxing", "Exercising", "Studying", "Sleeping"];
     
     var radioButtonController = SSRadioButtonsController()
@@ -134,6 +136,7 @@ class DailyAddViewController: UIViewController, UIPickerViewDataSource, UIPicker
                     }
                     SwiftSpinner.hide()
                     self.navigationController?.popViewControllerAnimated(true)
+                    self.tableViewController?.refreshData()
                 }
         }
     }

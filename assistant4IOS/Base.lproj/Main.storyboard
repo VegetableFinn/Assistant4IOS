@@ -8,13 +8,13 @@
         <!--日程记录-->
         <scene sceneID="DZg-Im-tGQ">
             <objects>
-                <tableViewController id="7Tt-de-xrw" customClass="DailyTableViewController" customModule="assistant4IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7Tt-de-xrw" customClass="DailyTableViewController" customModule="何凡" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="28" sectionFooterHeight="28" id="oeX-Cd-SMy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dailyCell" rowHeight="80" id="Vxg-eW-2gy" customClass="DailyTableViewCell" customModule="assistant4IOS" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dailyCell" rowHeight="80" id="Vxg-eW-2gy" customClass="DailyTableViewCell" customModule="何凡" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="92" width="414" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vxg-eW-2gy" id="SDe-zz-u9O">
@@ -74,7 +74,7 @@
                     <navigationItem key="navigationItem" title="日程记录" id="MVU-oA-WPV">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="ps9-Sj-3M4">
                             <connections>
-                                <segue destination="7Ta-fW-sQ3" kind="show" id="GHp-b2-Vc2"/>
+                                <segue destination="7Ta-fW-sQ3" kind="show" identifier="showAddDailyPage" id="GHp-b2-Vc2"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -91,7 +91,7 @@
         <!--Daily Edit View Controller-->
         <scene sceneID="fK8-ox-oud">
             <objects>
-                <viewController id="uwo-2g-Gkl" customClass="DailyEditViewController" customModule="assistant4IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="uwo-2g-Gkl" customClass="DailyEditViewController" customModule="何凡" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1yC-2t-Clu"/>
                         <viewControllerLayoutGuide type="bottom" id="X0s-ph-CyY"/>
@@ -141,7 +141,7 @@
         <!--Daily Add View Controller-->
         <scene sceneID="QJf-dh-obQ">
             <objects>
-                <viewController id="7Ta-fW-sQ3" customClass="DailyAddViewController" customModule="assistant4IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7Ta-fW-sQ3" customClass="DailyAddViewController" customModule="何凡" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="6qS-ox-c1E"/>
                         <viewControllerLayoutGuide type="bottom" id="OFB-Xk-gA0"/>
@@ -192,7 +192,7 @@
         <scene sceneID="jxY-SX-w7l">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eue-2b-elA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="日程管理" image="tab_bar_schedule_img" id="K9h-j9-doN"/>
+                    <tabBarItem key="tabBarItem" tag="1" title="日程管理" image="tab_bar_schedule_img" id="K9h-j9-doN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2ro-bU-vyv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -210,7 +210,7 @@
         <!--一个-->
         <scene sceneID="FZg-Uf-cpC">
             <objects>
-                <viewController id="9A0-rY-IxZ" customClass="OneViewController" customModule="assistant4IOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9A0-rY-IxZ" customClass="OneViewController" customModule="何凡" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UpD-oD-krC"/>
                         <viewControllerLayoutGuide type="bottom" id="VXU-wq-Edv"/>
@@ -240,12 +240,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HE1-Vi-F7c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1227" y="1221"/>
+            <point key="canvasLocation" x="1227" y="1257"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--MainUI Tab Bar Controller-->
         <scene sceneID="wGz-ZE-hpq">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="50s-d7-fyJ" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="50s-d7-fyJ" customClass="MainUITabBarController" customModule="何凡" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="Shg-xv-1yc">
                         <autoresizingMask key="autoresizingMask"/>

@@ -12,9 +12,12 @@ import Alamofire
 import LocalAuthentication
 
 class DailyEditViewController: UIViewController ,UIPickerViewDataSource, UIPickerViewDelegate {
-
+    
     @IBOutlet weak var typePicker: UIPickerView!
     @IBOutlet weak var contextTextView: UITextView!
+    
+    var tableViewController : DailyTableViewController?
+
     
     var pickerDataSource = ["Coding", "Outing", "Relaxing", "Exercising", "Studying", "Sleeping"];
     
@@ -22,11 +25,11 @@ class DailyEditViewController: UIViewController ,UIPickerViewDataSource, UIPicke
     var type = String()
     var content = String()
     var id = Int()
-
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let rightButton = UIBarButtonItem(barButtonSystemItem: .Save, target: self, action: #selector(DailyEditViewController.saveButtonClicked(_:)))
         self.navigationItem.rightBarButtonItem = rightButton
         self.navigationItem.title = "完善日程"
@@ -38,7 +41,7 @@ class DailyEditViewController: UIViewController ,UIPickerViewDataSource, UIPicke
         
         let rowIndex = find(type,pickerDataSource: pickerDataSource)
         self.typePicker.selectRow(rowIndex, inComponent: 0, animated: true)
-                       
+        
     }
     
     func saveButtonClicked(sender: UIBarButtonItem){
@@ -60,10 +63,11 @@ class DailyEditViewController: UIViewController ,UIPickerViewDataSource, UIPicke
                     }
                     SwiftSpinner.hide()
                     self.navigationController?.popViewControllerAnimated(true)
+                    self.tableViewController?.refreshData()
                 }
         }
     }
-
+    
     
     func find(type:String, pickerDataSource:NSArray) -> Int{
         var i = 0;
@@ -76,23 +80,24 @@ class DailyEditViewController: UIViewController ,UIPickerViewDataSource, UIPicke
         return 0
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    
+//     // In a storyboard-based application, you will often want to do a little preparation before navigation
+//     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        
+//        let navVC = segue.destinationViewController as UINavigationController
+//        
+//        let tableVC = navVC.viewControllers.first as YourTableViewControllerClass
+//        
+//        tableVC.yourTableViewArray = localArrayValue
+//     }
+ 
     
     
     func touchIdCheck() -> Bool{
@@ -155,6 +160,6 @@ class DailyEditViewController: UIViewController ,UIPickerViewDataSource, UIPicke
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         type = pickerDataSource[row]
     }
-
-
+    
+    
 }

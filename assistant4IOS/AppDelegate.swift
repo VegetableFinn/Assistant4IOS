@@ -40,6 +40,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(application: UIApplication, performActionForShortcutItem shortcutItem: UIApplicationShortcutItem, completionHandler: (Bool) -> Void){
+//        print("Shortcut tapped")
+        //com.hefan.appshortcut.new-schedule
+        if( shortcutItem.type == "com.hefan.appshortcut.new-schedule" ) {
+            let rootViewController = self.window!.rootViewController as! UITabBarController
+            rootViewController.selectedIndex = 1;
+            let scheduleNaviViewController = rootViewController.viewControllers![1]
+            let scheduleViewController = scheduleNaviViewController.childViewControllers[0]
+            scheduleViewController.performSegueWithIdentifier("showAddDailyPage", sender: scheduleViewController)
+        }
+    }
 
 
 }
