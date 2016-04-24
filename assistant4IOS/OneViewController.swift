@@ -20,7 +20,7 @@ class OneViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         self.oneText.layer.cornerRadius = 5;
-        self.oneText.layer.backgroundColor = UIColor.greenColor().CGColor
+        self.oneText.layer.backgroundColor = UIColor(red: CGFloat(255/255.0), green: CGFloat(218/255.0), blue: CGFloat(185/255.0), alpha: CGFloat(1.0)).CGColor
         self.oneText.textColor = UIColor.whiteColor()
         self.oneText.font = self.oneText.font?.fontWithSize(15)
         

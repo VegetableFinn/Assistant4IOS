@@ -17,6 +17,7 @@ class DailyTableViewCell: UITableViewCell {
     @IBOutlet weak var startLabel: UILabel!
     @IBOutlet weak var endLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var catagoryImg: UIImageView!
     
     var dailyModel : DailyModel? = nil
     

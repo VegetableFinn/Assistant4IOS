@@ -51,9 +51,13 @@
                                             <color key="textColor" red="0.70107984290000003" green="0.70107984290000003" blue="0.70107984290000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nhv-ND-ydq">
+                                            <rect key="frame" x="25" y="15" width="50" height="50"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="catagoryImg" destination="nhv-ND-ydq" id="ryv-Ws-AHv"/>
                                     <outlet property="contentLabel" destination="v0o-79-FUG" id="N1s-BQ-eyS"/>
                                     <outlet property="durationLabel" destination="rBW-3o-fL8" id="Smp-RX-d9g"/>
                                     <outlet property="endLabel" destination="5Wa-l2-0Jf" id="TaY-bN-bSh"/>
@@ -184,11 +188,11 @@
             </objects>
             <point key="canvasLocation" x="2653" y="388"/>
         </scene>
-        <!--日程记录-->
+        <!--日程管理-->
         <scene sceneID="jxY-SX-w7l">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="eue-2b-elA" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="日程记录" id="K9h-j9-doN"/>
+                    <tabBarItem key="tabBarItem" title="日程管理" image="tab_bar_schedule_img" id="K9h-j9-doN"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="2ro-bU-vyv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -227,7 +231,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="一个" id="QX1-C6-EbS"/>
+                    <tabBarItem key="tabBarItem" title="一个" image="tab_bar_one_img" id="QX1-C6-EbS"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="oneImage" destination="pBQ-Is-PMB" id="ZjS-jM-uf6"/>
@@ -257,4 +261,8 @@
             <point key="canvasLocation" x="508" y="388"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="tab_bar_one_img" width="25" height="25"/>
+        <image name="tab_bar_schedule_img" width="25" height="25"/>
+    </resources>
 </document>

@@ -62,7 +62,7 @@ class DailyTableViewController: UITableViewController {
         Alamofire.request(.GET, "http://104.224.154.89/daily/getRecent2Days.json", parameters: nil)
             .responseJSON { response in
                 if let JSON = response.result.value {
-//                                        print("JSON: \(JSON)")
+                    //                                        print("JSON: \(JSON)")
                     let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String
                     if errorMessage == "LOGIN_REQUIRED" {
                         self.needLogin()
@@ -90,28 +90,28 @@ class DailyTableViewController: UITableViewController {
                 self.dailyTableView.reloadData()
                 self.refreshControl?.endRefreshing()
                 SwiftSpinner.hide()
-            }
+        }
     }
     
     
-   
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Table view data source
-
+    
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return dailyList.count
     }
-
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("dailyCell", forIndexPath: indexPath) as! DailyTableViewCell
@@ -131,50 +131,68 @@ class DailyTableViewController: UITableViewController {
             let indexEndDtEnd = endDtText.endIndex.advancedBy(-3)
             endDtText = endDtText.substringToIndex(indexEndDtEnd)
             cell.endLabel?.text = endDtText
-
+            
         }
         
         cell.dailyModel = daily
         cell.durationLabel?.text = daily.duration
         
         
-        let catagoryLabel = UILabel(frame: CGRect(x: 25, y: 15, width: 50, height: 50))
-        catagoryLabel.layer.backgroundColor = UIColor.blackColor().CGColor
-        catagoryLabel.textColor = UIColor.whiteColor()
-        catagoryLabel.layer.cornerRadius = 5
-        let cataIndex = daily.catagory.startIndex.advancedBy(1)
-        catagoryLabel.text = daily.catagory.substringToIndex(cataIndex)
+        //        let catagoryLabel = UILabel(frame: CGRect(x: 25, y: 15, width: 50, height: 50))
+        //        catagoryLabel.layer.backgroundColor = UIColor.blackColor().CGColor
+        //        catagoryLabel.textColor = UIColor.whiteColor()
+        //        catagoryLabel.layer.cornerRadius = 5
+        //        let cataIndex = daily.catagory.startIndex.advancedBy(1)
+        //        catagoryLabel.text = daily.catagory.substringToIndex(cataIndex)
+        //        if(daily.catagory == "Coding"){
+        //            catagoryLabel.layer.backgroundColor = UIColor(red: CGFloat(0/255.0), green: CGFloat(110/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0)).CGColor
+        //            catagoryLabel.textColor = UIColor.whiteColor()
+        //        }else if(daily.catagory == "Relaxing"){
+        //            catagoryLabel.layer.backgroundColor = UIColor(red: CGFloat(174/255.0), green: CGFloat(238/255.0), blue: CGFloat(238/255.0), alpha: CGFloat(1.0)).CGColor
+        //            catagoryLabel.textColor = UIColor.whiteColor()
+        //        }else if(daily.catagory == "Sleeping"){
+        //            catagoryLabel.layer.backgroundColor = UIColor.purpleColor().CGColor
+        //            catagoryLabel.textColor = UIColor.whiteColor()
+        //        }else if(daily.catagory == "Exercising"){
+        //            catagoryLabel.layer.backgroundColor = UIColor.grayColor().CGColor
+        //            catagoryLabel.textColor = UIColor.whiteColor()
+        //        }else if(daily.catagory == "Studying"){
+        //            catagoryLabel.layer.backgroundColor = UIColor.orangeColor().CGColor
+        //            catagoryLabel.textColor = UIColor.whiteColor()
+        //        }
+        //
+        //        catagoryLabel.font = catagoryLabel.font.fontWithSize(30)
+        //        catagoryLabel.textAlignment = NSTextAlignment.Center
+        //
+        //        cell.addSubview(catagoryLabel)
+        
+        
         if(daily.catagory == "Coding"){
-            catagoryLabel.layer.backgroundColor = UIColor(red: CGFloat(0/255.0), green: CGFloat(110/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0)).CGColor
-            catagoryLabel.textColor = UIColor.whiteColor()
+            cell.catagoryImg.image = UIImage(named: "daily_cell_coding_img.png")
         }else if(daily.catagory == "Relaxing"){
-            catagoryLabel.layer.backgroundColor = UIColor(red: CGFloat(174/255.0), green: CGFloat(238/255.0), blue: CGFloat(238/255.0), alpha: CGFloat(1.0)).CGColor
-            catagoryLabel.textColor = UIColor.whiteColor()
+            cell.catagoryImg.image = UIImage(named: "daily_cell_relaxing_img.png")
         }else if(daily.catagory == "Sleeping"){
-            catagoryLabel.layer.backgroundColor = UIColor.purpleColor().CGColor
-            catagoryLabel.textColor = UIColor.whiteColor()
+            cell.catagoryImg.image = UIImage(named: "daily_cell_sleeping_img.png")
         }else if(daily.catagory == "Exercising"){
-            catagoryLabel.layer.backgroundColor = UIColor.grayColor().CGColor
-            catagoryLabel.textColor = UIColor.whiteColor()
+            cell.catagoryImg.image = UIImage(named: "daily_cell_exercising_img.png")
         }else if(daily.catagory == "Studying"){
-            catagoryLabel.layer.backgroundColor = UIColor.orangeColor().CGColor
-            catagoryLabel.textColor = UIColor.whiteColor()
+            cell.catagoryImg.image = UIImage(named: "daily_cell_studying_img.png")
+        }else if(daily.catagory == "Outing"){
+            cell.catagoryImg.image = UIImage(named: "daily_cell_outing_img.png")
         }
         
-        catagoryLabel.font = catagoryLabel.font.fontWithSize(30)
-        catagoryLabel.textAlignment = NSTextAlignment.Center
         
-        cell.addSubview(catagoryLabel)
+        
         return cell
     }
     
-
+    
     
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
-       
+        
     }
     
     override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
@@ -187,7 +205,7 @@ class DailyTableViewController: UITableViewController {
                 self.finishDaily(thisModel)
             }
             complete.backgroundColor = UIColor.blueColor()
-
+            
             returnActions.append(complete)
         }
         
@@ -224,24 +242,24 @@ class DailyTableViewController: UITableViewController {
                 SwiftSpinner.hide()
         }
     }
-
-
+    
+    
     /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
-    }
-    */
-
+     // Override to support rearranging the table view.
+     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+     
+     }
+     */
+    
     /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-      // In a storyboard-based application, you will often want to do a little preparation before navigation
+     // Override to support conditional rearranging of the table view.
+     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
@@ -250,7 +268,7 @@ class DailyTableViewController: UITableViewController {
             // pass data to next view
             let viewController:DailyEditViewController = segue.destinationViewController as! DailyEditViewController
             let indexPath = self.tableView.indexPathForSelectedRow!
-//            viewController.pinCode = self.exams[indexPath.row]
+            //            viewController.pinCode = self.exams[indexPath.row]
             viewController.type = dailyList[indexPath.row].catagory
             viewController.content = dailyList[indexPath.row].content
             viewController.id = dailyList[indexPath.row].id
@@ -271,7 +289,7 @@ class DailyTableViewController: UITableViewController {
                     result = true
                 }
                 else{
-//                    print("failed")
+                    //                    print("failed")
                     result = false
                 }
             })
@@ -279,7 +297,7 @@ class DailyTableViewController: UITableViewController {
             result = true
         }
         return result
-    
+        
     }
     
     
