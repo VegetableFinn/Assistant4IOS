@@ -117,24 +117,51 @@ class DailyTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCellWithIdentifier("dailyCell", forIndexPath: indexPath) as! DailyTableViewCell
         let daily = dailyList[indexPath.row]
         cell.contentLabel?.text = daily.content
-        cell.startLabel?.text = daily.startDt
-        cell.endLabel?.text = daily.endDt
+        
+        
+        let indexStartDt = daily.startDt.endIndex.advancedBy(-8)
+        var startDtText = daily.startDt.substringFromIndex(indexStartDt)
+        let indexStartDtEnd = startDtText.endIndex.advancedBy(-3)
+        startDtText = startDtText.substringToIndex(indexStartDtEnd)
+        cell.startLabel?.text = startDtText
+        
+        if(daily.endDt != ""){
+            let indexEndDt = daily.endDt.endIndex.advancedBy(-8)
+            var endDtText = daily.endDt.substringFromIndex(indexEndDt)
+            let indexEndDtEnd = endDtText.endIndex.advancedBy(-3)
+            endDtText = endDtText.substringToIndex(indexEndDtEnd)
+            cell.endLabel?.text = endDtText
+
+        }
+        
         cell.dailyModel = daily
         cell.durationLabel?.text = daily.duration
-        let catagoryLabel = UILabel(frame: CGRect(x: 280, y: 41, width: 70, height: 20))
+        
+        
+        let catagoryLabel = UILabel(frame: CGRect(x: 25, y: 15, width: 50, height: 50))
         catagoryLabel.layer.backgroundColor = UIColor.blackColor().CGColor
         catagoryLabel.textColor = UIColor.whiteColor()
         catagoryLabel.layer.cornerRadius = 5
-        catagoryLabel.text = daily.catagory
+        let cataIndex = daily.catagory.startIndex.advancedBy(1)
+        catagoryLabel.text = daily.catagory.substringToIndex(cataIndex)
         if(daily.catagory == "Coding"){
-            catagoryLabel.layer.backgroundColor = UIColor.greenColor().CGColor
+            catagoryLabel.layer.backgroundColor = UIColor(red: CGFloat(0/255.0), green: CGFloat(110/255.0), blue: CGFloat(255/255.0), alpha: CGFloat(1.0)).CGColor
             catagoryLabel.textColor = UIColor.whiteColor()
-        }else  if(daily.catagory == "Relaxing"){
-            catagoryLabel.layer.backgroundColor = UIColor.redColor().CGColor
+        }else if(daily.catagory == "Relaxing"){
+            catagoryLabel.layer.backgroundColor = UIColor(red: CGFloat(174/255.0), green: CGFloat(238/255.0), blue: CGFloat(238/255.0), alpha: CGFloat(1.0)).CGColor
+            catagoryLabel.textColor = UIColor.whiteColor()
+        }else if(daily.catagory == "Sleeping"){
+            catagoryLabel.layer.backgroundColor = UIColor.purpleColor().CGColor
+            catagoryLabel.textColor = UIColor.whiteColor()
+        }else if(daily.catagory == "Exercising"){
+            catagoryLabel.layer.backgroundColor = UIColor.grayColor().CGColor
+            catagoryLabel.textColor = UIColor.whiteColor()
+        }else if(daily.catagory == "Studying"){
+            catagoryLabel.layer.backgroundColor = UIColor.orangeColor().CGColor
             catagoryLabel.textColor = UIColor.whiteColor()
         }
         
-        catagoryLabel.font = catagoryLabel.font.fontWithSize(12)
+        catagoryLabel.font = catagoryLabel.font.fontWithSize(30)
         catagoryLabel.textAlignment = NSTextAlignment.Center
         
         cell.addSubview(catagoryLabel)
@@ -169,11 +196,6 @@ class DailyTableViewController: UITableViewController {
         }
         delete.backgroundColor = UIColor.redColor()
         returnActions.append(delete)
-//
-//        let share = UITableViewRowAction(style: .Normal, title: "Share") { action, index in
-//            print("share button tapped")
-//        }
-//        share.backgroundColor = UIColor.blueColor()
         
         return returnActions
     }
