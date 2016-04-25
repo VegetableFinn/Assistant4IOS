@@ -308,7 +308,7 @@ class TodoTableViewController: UITableViewController {
     
     func login(){
         let pwd = ConfigUtil.loadPwdData()
-        Alamofire.request(.GET, "http://104.224.154.89/login.html?loginAccount="+pwd, parameters: ["foo": "bar"])
+        Alamofire.request(.GET, "http://104.224.154.89/login.html", parameters: ["loginAccount": pwd])
             .responseJSON { response in
                 if let JSON = response.result.value {
                     let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String
@@ -323,7 +323,6 @@ class TodoTableViewController: UITableViewController {
                         self.refreshToDoData()
                     }
                 }
-                
         }
     }
     
