@@ -22,11 +22,34 @@ class TodoTableViewController: UITableViewController {
         super.viewDidLoad()
         
         
+        //添加刷新
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.addTarget(self, action: #selector(TodoTableViewController.performAddSegue), forControlEvents: UIControlEvents.ValueChanged)
+//        refreshControl.attributedTitle = NSAttributedString(string: "我就是这么跳")
+//        self.refreshControl = refreshControl
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TodoTableViewController.performAddSegue))
+        tapGesture.numberOfTapsRequired = 1
+        self.oneImage.addGestureRecognizer(tapGesture)
+
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+        self.tableView.contentInset = UIEdgeInsetsMake(-20, 0, 0, 0)
+
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+//        self.tableView.contentInset = UIEdgeInsetsMake(10, 0, 0, 0)
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -117,13 +140,34 @@ class TodoTableViewController: UITableViewController {
     }
     
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
+    
+    // Override to support conditional editing of the table view.
+    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+ 
+    override func tableView(tableView: UITableView, editActionsForRowAtIndexPath indexPath: NSIndexPath) -> [UITableViewRowAction]?{
+        
+        let thisModel = todoModels[indexPath.row]
+
+        var returnActions = [UITableViewRowAction]()
+        
+        let delete = UITableViewRowAction(style: .Normal, title: "删除") { action, index in
+            self.deleteTodo(thisModel)
+        }
+        delete.backgroundColor = UIColor.redColor()
+        returnActions.append(delete)
+        
+        return returnActions
+    }
+    
+    private func deleteTodo(thisModel:ToDoModel){
+        SwiftSpinner.show("Connecting to satellite...")
+        Alamofire.request(.GET, "http://104.224.154.89/todo/deleteTodo.html?id="+String(thisModel.id), parameters: ["foo": "bar"])
+            .responseJSON { response in
+                self.refreshToDoData()
+        }
+    }
     
     /*
      // Override to support editing the table view.
@@ -151,16 +195,15 @@ class TodoTableViewController: UITableViewController {
      return true
      }
      */
-    
-    /*
-     // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "todoAddSegue") {
+            let viewController:TodoAddViewController = segue.destinationViewController as! TodoAddViewController
+            viewController.tableViewController = self
+        }
+    }
      
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
     func refreshPicData(){
         Alamofire.request(.GET, "http://104.224.154.89/one/getLastOne.json", parameters: nil)
@@ -224,7 +267,7 @@ class TodoTableViewController: UITableViewController {
         Alamofire.request(.GET, "http://104.224.154.89/todo/getToDoList.json", parameters: nil)
             .responseJSON { response in
                 if let JSON = response.result.value {
-                    //                                        print("JSON: \(JSON)")
+//                                                            print("JSON: \(JSON)")
                     let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String
                     if errorMessage == "LOGIN_REQUIRED" {
                         self.needLogin()
@@ -294,6 +337,17 @@ class TodoTableViewController: UITableViewController {
             result = true
         }
         return result
+        
+    }
+    
+    func performAddSegue(){
+        self.refreshControl?.endRefreshing()
+        self.performSegueWithIdentifier("todoAddSegue", sender: self)
+    }
+    
+    func handleImageTapGesture(){
+        
+        print("1")
         
     }
     
