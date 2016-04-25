@@ -224,7 +224,7 @@
                             <outlet property="delegate" destination="Cf4-tv-MaI" id="IzA-fY-QPd"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="设置中心" id="fJq-OM-zUO"/>
+                    <tabBarItem key="tabBarItem" title="设置中心" image="tab_bar_settings_img" id="fJq-OM-zUO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Eut-2Z-qJV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -397,7 +397,7 @@
         <scene sceneID="JIU-3b-ZKB">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FKB-vO-EiF" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="待办事项" image="tab_bar_one_img" id="YBu-8m-vHZ"/>
+                    <tabBarItem key="tabBarItem" title="待办事项" image="tab_bar_todo_img" id="YBu-8m-vHZ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="rn3-zt-sxk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -414,7 +414,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="tab_bar_one_img" width="25" height="25"/>
         <image name="tab_bar_schedule_img" width="25" height="25"/>
+        <image name="tab_bar_settings_img" width="25" height="25"/>
+        <image name="tab_bar_todo_img" width="25" height="25"/>
     </resources>
 </document>
