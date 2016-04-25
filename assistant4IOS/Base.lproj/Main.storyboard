@@ -201,6 +201,36 @@
             </objects>
             <point key="canvasLocation" x="1320" y="388"/>
         </scene>
+        <!--设置中心-->
+        <scene sceneID="7UC-ov-e8n">
+            <objects>
+                <tableViewController id="Cf4-tv-MaI" customClass="SettingsTableViewController" customModule="何凡" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="0f6-jJ-dp9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="settingsCell" id="Gna-cW-JqT" customClass="SettingsTableViewCell" customModule="何凡" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gna-cW-JqT" id="b16-DD-84n">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Cf4-tv-MaI" id="SSH-3m-ou2"/>
+                            <outlet property="delegate" destination="Cf4-tv-MaI" id="IzA-fY-QPd"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="设置中心" id="fJq-OM-zUO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Eut-2Z-qJV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="536" y="-473"/>
+        </scene>
         <!--MainUI Tab Bar Controller-->
         <scene sceneID="wGz-ZE-hpq">
             <objects>
@@ -213,6 +243,7 @@
                     <connections>
                         <segue destination="FKB-vO-EiF" kind="relationship" relationship="viewControllers" id="0TR-HD-LVB"/>
                         <segue destination="eue-2b-elA" kind="relationship" relationship="viewControllers" id="y1X-qA-ih2"/>
+                        <segue destination="Cf4-tv-MaI" kind="relationship" relationship="viewControllers" id="QSa-LJ-WZU"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dan-uw-4Cs" userLabel="First Responder" sceneMemberID="firstResponder"/>

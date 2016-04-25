@@ -37,6 +37,16 @@ class TodoTableViewController: UITableViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(TodoTableViewController.performAddSegue))
         tapGesture.numberOfTapsRequired = 1
         self.oneImage.addGestureRecognizer(tapGesture)
+        
+        
+//        var myDict: NSDictionary?
+//        if let path = NSBundle.mainBundle().pathForResource("info", ofType: "plist") {
+//            print(path)
+//            myDict = NSDictionary(contentsOfFile: path)
+//        }
+//        if let dict = myDict {
+//            print(dict)
+//        }
 
     }
     
@@ -297,9 +307,23 @@ class TodoTableViewController: UITableViewController {
     
     
     func login(){
-        Alamofire.request(.GET, "http://104.224.154.89/login.html?loginAccount=abc", parameters: ["foo": "bar"])
+        let pwd = ConfigUtil.loadPwdData()
+        Alamofire.request(.GET, "http://104.224.154.89/login.html?loginAccount="+pwd, parameters: ["foo": "bar"])
             .responseJSON { response in
-                self.refreshToDoData()
+                if let JSON = response.result.value {
+                    let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String
+                    if errorMessage == "LOGIN_FAIL" {
+                        SwiftSpinner.hide()
+                        let alertController = UIAlertController(title: "警告", message: "身份校验失败，所以你是谁？", preferredStyle: UIAlertControllerStyle.Alert)
+                        let cancelAction = UIAlertAction(title: "明白了", style: UIAlertActionStyle.Cancel, handler: nil)
+                        alertController.addAction(cancelAction)
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                        return
+                    } else{
+                        self.refreshToDoData()
+                    }
+                }
+                
         }
     }
     
@@ -344,12 +368,7 @@ class TodoTableViewController: UITableViewController {
         self.refreshControl?.endRefreshing()
         self.performSegueWithIdentifier("todoAddSegue", sender: self)
     }
-    
-    func handleImageTapGesture(){
-        
-        print("1")
-        
-    }
+
     
     
 }

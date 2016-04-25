@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4308E1F51CCB158C00E13C75 /* SSRadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4308E1F31CCB158C00E13C75 /* SSRadioButton.swift */; };
 		4308E1F61CCB158C00E13C75 /* SSRadioButtonsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4308E1F41CCB158C00E13C75 /* SSRadioButtonsController.swift */; };
-		4308E1F81CCB3E7D00E13C75 /* OneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4308E1F71CCB3E7D00E13C75 /* OneViewController.swift */; };
 		431E9A861CCDAFB40015B007 /* TodoAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 431E9A851CCDAFB40015B007 /* TodoAddViewController.swift */; };
 		434534C41CCCF88F00548EB3 /* TodoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534C31CCCF88F00548EB3 /* TodoTableViewController.swift */; };
 		434534C61CCCFEE500548EB3 /* TodoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434534C51CCCFEE500548EB3 /* TodoTableViewCell.swift */; };
@@ -25,6 +24,10 @@
 		43691E421CCA1BFF0021DD56 /* DailyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43691E411CCA1BFF0021DD56 /* DailyTableViewController.swift */; };
 		43691E441CCA1C1D0021DD56 /* DailyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43691E431CCA1C1D0021DD56 /* DailyTableViewCell.swift */; };
 		43691E461CCA1CE90021DD56 /* DailyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43691E451CCA1CE90021DD56 /* DailyModel.swift */; };
+		437117421CCDEB87007E710C /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437117411CCDEB87007E710C /* SettingsTableViewController.swift */; };
+		437117441CCDEBE0007E710C /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437117431CCDEBE0007E710C /* SettingsTableViewCell.swift */; };
+		437117461CCDF151007E710C /* config.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437117451CCDF151007E710C /* config.plist */; };
+		437117481CCDF1DC007E710C /* ConfigUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437117471CCDF1DC007E710C /* ConfigUtil.swift */; };
 		43C2BE9F1CCBB28800D664C4 /* DailyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2BE9E1CCBB28800D664C4 /* DailyEditViewController.swift */; };
 		43D4CB611CCCE6D3004B1FCD /* MainUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D4CB601CCCE6D3004B1FCD /* MainUITabBarController.swift */; };
 		70CFF8D0DC05D31D4E35CDB4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022D4481C5F94CD92301EB79 /* Pods.framework */; };
@@ -51,7 +54,6 @@
 		022D4481C5F94CD92301EB79 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4308E1F31CCB158C00E13C75 /* SSRadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSRadioButton.swift; path = ../../SSRadioButtonsController/SSRadioButtonController/SSRadioButton.swift; sourceTree = "<group>"; };
 		4308E1F41CCB158C00E13C75 /* SSRadioButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSRadioButtonsController.swift; path = ../../SSRadioButtonsController/SSRadioButtonController/SSRadioButtonsController.swift; sourceTree = "<group>"; };
-		4308E1F71CCB3E7D00E13C75 /* OneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneViewController.swift; sourceTree = "<group>"; };
 		431E9A851CCDAFB40015B007 /* TodoAddViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoAddViewController.swift; sourceTree = "<group>"; };
 		434534C31CCCF88F00548EB3 /* TodoTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableViewController.swift; sourceTree = "<group>"; };
 		434534C51CCCFEE500548EB3 /* TodoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoTableViewCell.swift; sourceTree = "<group>"; };
@@ -73,6 +75,10 @@
 		43691E411CCA1BFF0021DD56 /* DailyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTableViewController.swift; sourceTree = "<group>"; };
 		43691E431CCA1C1D0021DD56 /* DailyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyTableViewCell.swift; sourceTree = "<group>"; };
 		43691E451CCA1CE90021DD56 /* DailyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyModel.swift; sourceTree = "<group>"; };
+		437117411CCDEB87007E710C /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		437117431CCDEBE0007E710C /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		437117451CCDF151007E710C /* config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = config.plist; sourceTree = "<group>"; };
+		437117471CCDF1DC007E710C /* ConfigUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigUtil.swift; sourceTree = "<group>"; };
 		43C2BE9E1CCBB28800D664C4 /* DailyEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyEditViewController.swift; sourceTree = "<group>"; };
 		43D4CB601CCCE6D3004B1FCD /* MainUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainUITabBarController.swift; sourceTree = "<group>"; };
 		A16CC351600553DDCE6AD3C6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,6 +154,10 @@
 		43691E121CCA1ACE0021DD56 /* assistant4IOS */ = {
 			isa = PBXGroup;
 			children = (
+				437117451CCDF151007E710C /* config.plist */,
+				437117401CCDEB77007E710C /* Settings */,
+				4371173F1CCDEB47007E710C /* Daily */,
+				4371173E1CCDEB28007E710C /* Todo */,
 				4308E1F21CCB154600E13C75 /* SSRadioButtonController */,
 				43691E131CCA1ACE0021DD56 /* AppDelegate.swift */,
 				43691E151CCA1ACE0021DD56 /* ViewController.swift */,
@@ -155,17 +165,8 @@
 				43691E1A1CCA1ACE0021DD56 /* Assets.xcassets */,
 				43691E1C1CCA1ACE0021DD56 /* LaunchScreen.storyboard */,
 				43691E1F1CCA1ACE0021DD56 /* Info.plist */,
-				43691E411CCA1BFF0021DD56 /* DailyTableViewController.swift */,
-				434534C31CCCF88F00548EB3 /* TodoTableViewController.swift */,
-				43691E431CCA1C1D0021DD56 /* DailyTableViewCell.swift */,
-				434534C51CCCFEE500548EB3 /* TodoTableViewCell.swift */,
-				43691E451CCA1CE90021DD56 /* DailyModel.swift */,
-				43647C1F1CCA76630026C831 /* DailyAddViewController.swift */,
-				4308E1F71CCB3E7D00E13C75 /* OneViewController.swift */,
-				43C2BE9E1CCBB28800D664C4 /* DailyEditViewController.swift */,
 				43D4CB601CCCE6D3004B1FCD /* MainUITabBarController.swift */,
-				434534C71CCD027C00548EB3 /* ToDoModel.swift */,
-				431E9A851CCDAFB40015B007 /* TodoAddViewController.swift */,
+				437117471CCDF1DC007E710C /* ConfigUtil.swift */,
 			);
 			path = assistant4IOS;
 			sourceTree = "<group>";
@@ -186,6 +187,38 @@
 				43691E351CCA1ACF0021DD56 /* Info.plist */,
 			);
 			path = assistant4IOSUITests;
+			sourceTree = "<group>";
+		};
+		4371173E1CCDEB28007E710C /* Todo */ = {
+			isa = PBXGroup;
+			children = (
+				434534C31CCCF88F00548EB3 /* TodoTableViewController.swift */,
+				434534C51CCCFEE500548EB3 /* TodoTableViewCell.swift */,
+				434534C71CCD027C00548EB3 /* ToDoModel.swift */,
+				431E9A851CCDAFB40015B007 /* TodoAddViewController.swift */,
+			);
+			name = Todo;
+			sourceTree = "<group>";
+		};
+		4371173F1CCDEB47007E710C /* Daily */ = {
+			isa = PBXGroup;
+			children = (
+				43C2BE9E1CCBB28800D664C4 /* DailyEditViewController.swift */,
+				43691E411CCA1BFF0021DD56 /* DailyTableViewController.swift */,
+				43691E431CCA1C1D0021DD56 /* DailyTableViewCell.swift */,
+				43691E451CCA1CE90021DD56 /* DailyModel.swift */,
+				43647C1F1CCA76630026C831 /* DailyAddViewController.swift */,
+			);
+			name = Daily;
+			sourceTree = "<group>";
+		};
+		437117401CCDEB77007E710C /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				437117431CCDEBE0007E710C /* SettingsTableViewCell.swift */,
+				437117411CCDEB87007E710C /* SettingsTableViewController.swift */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		CFC5FEAA10F9FC3F12852FE4 /* Frameworks */ = {
@@ -306,6 +339,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				437117461CCDF151007E710C /* config.plist in Resources */,
 				43691E1E1CCA1ACE0021DD56 /* LaunchScreen.storyboard in Resources */,
 				43691E1B1CCA1ACE0021DD56 /* Assets.xcassets in Resources */,
 				43691E191CCA1ACE0021DD56 /* Main.storyboard in Resources */,
@@ -383,8 +417,8 @@
 			files = (
 				43C2BE9F1CCBB28800D664C4 /* DailyEditViewController.swift in Sources */,
 				434534C41CCCF88F00548EB3 /* TodoTableViewController.swift in Sources */,
-				4308E1F81CCB3E7D00E13C75 /* OneViewController.swift in Sources */,
 				43647C201CCA76630026C831 /* DailyAddViewController.swift in Sources */,
+				437117481CCDF1DC007E710C /* ConfigUtil.swift in Sources */,
 				4308E1F61CCB158C00E13C75 /* SSRadioButtonsController.swift in Sources */,
 				43691E161CCA1ACE0021DD56 /* ViewController.swift in Sources */,
 				4308E1F51CCB158C00E13C75 /* SSRadioButton.swift in Sources */,
@@ -392,7 +426,9 @@
 				434534C61CCCFEE500548EB3 /* TodoTableViewCell.swift in Sources */,
 				43691E461CCA1CE90021DD56 /* DailyModel.swift in Sources */,
 				43691E441CCA1C1D0021DD56 /* DailyTableViewCell.swift in Sources */,
+				437117441CCDEBE0007E710C /* SettingsTableViewCell.swift in Sources */,
 				43691E141CCA1ACE0021DD56 /* AppDelegate.swift in Sources */,
+				437117421CCDEB87007E710C /* SettingsTableViewController.swift in Sources */,
 				431E9A861CCDAFB40015B007 /* TodoAddViewController.swift in Sources */,
 				43691E421CCA1BFF0021DD56 /* DailyTableViewController.swift in Sources */,
 				43D4CB611CCCE6D3004B1FCD /* MainUITabBarController.swift in Sources */,

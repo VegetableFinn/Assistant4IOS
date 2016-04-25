@@ -137,10 +137,32 @@ class TodoAddViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         
     }
     
+//    func login(){
+//        let pwd = ConfigUtil.loadPwdData()
+//        Alamofire.request(.GET, "http://104.224.154.89/login.html?loginAccount="+pwd, parameters: ["foo": "bar"])
+//            .responseJSON { response in
+//                SwiftSpinner.hide()
+//        }
+//    }
+    
     func login(){
-        Alamofire.request(.GET, "http://104.224.154.89/login.html?loginAccount=abc", parameters: ["foo": "bar"])
+        let pwd = ConfigUtil.loadPwdData()
+        Alamofire.request(.GET, "http://104.224.154.89/login.html?loginAccount="+pwd, parameters: ["foo": "bar"])
             .responseJSON { response in
-                SwiftSpinner.hide()
+                if let JSON = response.result.value {
+                    let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String
+                    if errorMessage == "LOGIN_FAIL" {
+                        SwiftSpinner.hide()
+                        let alertController = UIAlertController(title: "警告", message: "身份校验失败，所以你是谁？", preferredStyle: UIAlertControllerStyle.Alert)
+                        let cancelAction = UIAlertAction(title: "明白了", style: UIAlertActionStyle.Cancel, handler: nil)
+                        alertController.addAction(cancelAction)
+                        self.presentViewController(alertController, animated: true, completion: nil)
+                        return
+                    } else{
+                        //                        self.refreshToDoData()
+                    }
+                }
+                
         }
     }
     
