@@ -133,8 +133,8 @@ class TodoTableViewController: UITableViewController {
         let parameters = ["id":id,"newStatus":newStatus]
         
         
-        //104.224.154.89
-        Alamofire.request(.GET, "http://104.224.154.89/todo/editTodo.html", parameters: parameters ).responseJSON { response in
+        //106.185.32.240
+        Alamofire.request(.GET, "http://106.185.32.240/todo/editTodo.html", parameters: parameters ).responseJSON { response in
             
             if let JSON = response.result.value {
                 
@@ -173,7 +173,7 @@ class TodoTableViewController: UITableViewController {
     
     private func deleteTodo(thisModel:ToDoModel){
         SwiftSpinner.show("Connecting to satellite...")
-        Alamofire.request(.GET, "http://104.224.154.89/todo/deleteTodo.html?id="+String(thisModel.id), parameters: ["foo": "bar"])
+        Alamofire.request(.GET, "http://106.185.32.240/todo/deleteTodo.html?id="+String(thisModel.id), parameters: ["foo": "bar"])
             .responseJSON { response in
                 self.refreshToDoData()
         }
@@ -216,7 +216,7 @@ class TodoTableViewController: UITableViewController {
      
     
     func refreshPicData(){
-        Alamofire.request(.GET, "http://104.224.154.89/one/getLastOne.json", parameters: nil)
+        Alamofire.request(.GET, "http://106.185.32.240/one/getLastOne.json", parameters: nil)
             .responseJSON { response in
                 if let JSON = response.result.value {
                     let title = JSON["title"] as! String
@@ -235,7 +235,7 @@ class TodoTableViewController: UITableViewController {
         
         var localPath: NSURL?
         Alamofire.download(.GET,
-            "http://104.224.154.89/one/showImage.json?title="+title,
+            "http://106.185.32.240/one/showImage.json?title="+title,
             destination: { (temporaryURL, response) in
                 let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0]
                 let pathComponent = title + ".jpg"
@@ -273,8 +273,8 @@ class TodoTableViewController: UITableViewController {
     func refreshToDoData(){
         self.todoModels = [ToDoModel]()
         SwiftSpinner.show("Connecting to satellite...")
-        //104.224.154.89
-        Alamofire.request(.GET, "http://104.224.154.89/todo/getToDoList.json", parameters: nil)
+        //106.185.32.240
+        Alamofire.request(.GET, "http://106.185.32.240/todo/getToDoList.json", parameters: nil)
             .responseJSON { response in
                 if let JSON = response.result.value {
 //                                                            print("JSON: \(JSON)")
@@ -308,7 +308,7 @@ class TodoTableViewController: UITableViewController {
     
     func login(){
         let pwd = ConfigUtil.loadPwdData()
-        Alamofire.request(.GET, "http://104.224.154.89/login.html", parameters: ["loginAccount": pwd])
+        Alamofire.request(.GET, "http://106.185.32.240/login.html", parameters: ["loginAccount": pwd])
             .responseJSON { response in
                 if let JSON = response.result.value {
                     let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String
