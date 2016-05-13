@@ -30,6 +30,9 @@
 		437117481CCDF1DC007E710C /* ConfigUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437117471CCDF1DC007E710C /* ConfigUtil.swift */; };
 		43C2BE9F1CCBB28800D664C4 /* DailyEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43C2BE9E1CCBB28800D664C4 /* DailyEditViewController.swift */; };
 		43D4CB611CCCE6D3004B1FCD /* MainUITabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43D4CB601CCCE6D3004B1FCD /* MainUITabBarController.swift */; };
+		43E213791CE562100087757F /* PlanTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E213781CE562100087757F /* PlanTableViewController.swift */; };
+		43E2137B1CE562630087757F /* PlanTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E2137A1CE562630087757F /* PlanTableViewCell.swift */; };
+		43E2137E1CE564B00087757F /* PlanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43E2137D1CE564B00087757F /* PlanModel.swift */; };
 		70CFF8D0DC05D31D4E35CDB4 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 022D4481C5F94CD92301EB79 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -81,6 +84,9 @@
 		437117471CCDF1DC007E710C /* ConfigUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfigUtil.swift; sourceTree = "<group>"; };
 		43C2BE9E1CCBB28800D664C4 /* DailyEditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DailyEditViewController.swift; sourceTree = "<group>"; };
 		43D4CB601CCCE6D3004B1FCD /* MainUITabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainUITabBarController.swift; sourceTree = "<group>"; };
+		43E213781CE562100087757F /* PlanTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewController.swift; sourceTree = "<group>"; };
+		43E2137A1CE562630087757F /* PlanTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableViewCell.swift; sourceTree = "<group>"; };
+		43E2137D1CE564B00087757F /* PlanModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanModel.swift; sourceTree = "<group>"; };
 		A16CC351600553DDCE6AD3C6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		DF9F87E9E68752F68D727FD6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,6 +160,7 @@
 		43691E121CCA1ACE0021DD56 /* assistant4IOS */ = {
 			isa = PBXGroup;
 			children = (
+				43E213771CE561EB0087757F /* Plan */,
 				437117451CCDF151007E710C /* config.plist */,
 				437117401CCDEB77007E710C /* Settings */,
 				4371173F1CCDEB47007E710C /* Daily */,
@@ -219,6 +226,16 @@
 				437117411CCDEB87007E710C /* SettingsTableViewController.swift */,
 			);
 			name = Settings;
+			sourceTree = "<group>";
+		};
+		43E213771CE561EB0087757F /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				43E213781CE562100087757F /* PlanTableViewController.swift */,
+				43E2137A1CE562630087757F /* PlanTableViewCell.swift */,
+				43E2137D1CE564B00087757F /* PlanModel.swift */,
+			);
+			name = Plan;
 			sourceTree = "<group>";
 		};
 		CFC5FEAA10F9FC3F12852FE4 /* Frameworks */ = {
@@ -423,11 +440,14 @@
 				43691E161CCA1ACE0021DD56 /* ViewController.swift in Sources */,
 				4308E1F51CCB158C00E13C75 /* SSRadioButton.swift in Sources */,
 				434534C81CCD027C00548EB3 /* ToDoModel.swift in Sources */,
+				43E213791CE562100087757F /* PlanTableViewController.swift in Sources */,
 				434534C61CCCFEE500548EB3 /* TodoTableViewCell.swift in Sources */,
+				43E2137E1CE564B00087757F /* PlanModel.swift in Sources */,
 				43691E461CCA1CE90021DD56 /* DailyModel.swift in Sources */,
 				43691E441CCA1C1D0021DD56 /* DailyTableViewCell.swift in Sources */,
 				437117441CCDEBE0007E710C /* SettingsTableViewCell.swift in Sources */,
 				43691E141CCA1ACE0021DD56 /* AppDelegate.swift in Sources */,
+				43E2137B1CE562630087757F /* PlanTableViewCell.swift in Sources */,
 				437117421CCDEB87007E710C /* SettingsTableViewController.swift in Sources */,
 				431E9A861CCDAFB40015B007 /* TodoAddViewController.swift in Sources */,
 				43691E421CCA1BFF0021DD56 /* DailyTableViewController.swift in Sources */,

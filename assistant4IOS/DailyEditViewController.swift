@@ -50,8 +50,8 @@ class DailyEditViewController: UIViewController ,UIPickerViewDataSource, UIPicke
         
         let parameters = ["type":type,"content":contextTextView.text,"id":String(id)]
         
-        //106.185.32.240
-        Alamofire.request(.GET, "http://106.185.32.240/daily/editDaily.html", parameters: parameters as! [String : String])
+        //45.32.10.131
+        Alamofire.request(.GET, "http://45.32.10.131/daily/editDaily.html", parameters: parameters as! [String : String])
             .responseJSON { response in
                 
                 if let JSON = response.result.value {
@@ -124,16 +124,9 @@ class DailyEditViewController: UIViewController ,UIPickerViewDataSource, UIPicke
         
     }
     
-//    func login(){
-//        let pwd = ConfigUtil.loadPwdData()
-//        Alamofire.request(.GET, "http://106.185.32.240/login.html?loginAccount="+pwd, parameters: ["foo": "bar"])
-//            .responseJSON { response in
-//                SwiftSpinner.hide()
-//        }
-//    }
     func login(){
         let pwd = ConfigUtil.loadPwdData()
-        Alamofire.request(.GET, "http://106.185.32.240/login.html", parameters: ["loginAccount": pwd])
+        Alamofire.request(.GET, "http://45.32.10.131/login.html", parameters: ["loginAccount": pwd])
             .responseJSON { response in
                 if let JSON = response.result.value {
                     let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String

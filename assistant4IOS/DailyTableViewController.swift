@@ -35,16 +35,9 @@ class DailyTableViewController: UITableViewController {
         
     }
     
-//    func login(){
-//        let pwd = ConfigUtil.loadPwdData()
-//        Alamofire.request(.GET, "http://106.185.32.240/login.html?loginAccount=pwd", parameters: ["foo": "bar"])
-//            .responseJSON { response in
-//                self.refreshData()
-//        }
-//    }
     func login(){
         let pwd = ConfigUtil.loadPwdData()
-        Alamofire.request(.GET, "http://106.185.32.240/login.html", parameters: ["loginAccount": pwd])
+        Alamofire.request(.GET, "http://45.32.10.131/login.html", parameters: ["loginAccount": pwd])
             .responseJSON { response in
                 if let JSON = response.result.value {
                     let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String
@@ -78,8 +71,8 @@ class DailyTableViewController: UITableViewController {
     func refreshData(){
         self.dailyList = [DailyModel]()
         SwiftSpinner.show("Connecting to satellite...")
-        //106.185.32.240
-        Alamofire.request(.GET, "http://106.185.32.240/daily/getRecent2Days.json", parameters: nil)
+        //45.32.10.131
+        Alamofire.request(.GET, "http://45.32.10.131/daily/getRecent2Days.json", parameters: nil)
             .responseJSON { response in
                 if let JSON = response.result.value {
                     //                                        print("JSON: \(JSON)")
@@ -225,7 +218,7 @@ class DailyTableViewController: UITableViewController {
     
     func finishDaily(model: DailyModel) {
         SwiftSpinner.show("Connecting to satellite...")
-        Alamofire.request(.GET, "http://106.185.32.240/daily/endDaily.html?id="+String(model.id), parameters: ["foo": "bar"])
+        Alamofire.request(.GET, "http://45.32.10.131/daily/endDaily.html?id="+String(model.id), parameters: ["foo": "bar"])
             .responseJSON { response in
                 self.refreshData()
         }
@@ -233,7 +226,7 @@ class DailyTableViewController: UITableViewController {
     
     func deleteDaily(model: DailyModel){
         SwiftSpinner.show("Connecting to satellite...")
-        Alamofire.request(.GET, "http://106.185.32.240/daily/deleteDaily.html?id="+String(model.id), parameters: ["foo": "bar"])
+        Alamofire.request(.GET, "http://45.32.10.131/daily/deleteDaily.html?id="+String(model.id), parameters: ["foo": "bar"])
             .responseJSON { response in
                 self.refreshData()
         }

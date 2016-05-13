@@ -78,8 +78,8 @@ class TodoAddViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         SwiftSpinner.show("Connecting to satellite...")
         let parameters = ["content":textView.text,"catagory":type,"dt":dt]
         
-        //106.185.32.240
-        Alamofire.request(.GET, "http://106.185.32.240/todo/addTodo.html", parameters: parameters )
+        //45.32.10.131
+        Alamofire.request(.GET, "http://45.32.10.131/todo/addTodo.html", parameters: parameters )
             .responseJSON { response in
                 
                 if let JSON = response.result.value {
@@ -137,18 +137,10 @@ class TodoAddViewController: UIViewController, UIPickerViewDataSource, UIPickerV
         
     }
     
-//    func login(){
-//        let pwd = ConfigUtil.loadPwdData()
-//        Alamofire.request(.GET, "http://106.185.32.240/login.html?loginAccount="+pwd, parameters: ["foo": "bar"])
-//            .responseJSON { response in
-//                SwiftSpinner.hide()
-//        }
-//    }
-    
 
     func login(){
         let pwd = ConfigUtil.loadPwdData()
-        Alamofire.request(.GET, "http://106.185.32.240/login.html", parameters: ["loginAccount": pwd])
+        Alamofire.request(.GET, "http://45.32.10.131/login.html", parameters: ["loginAccount": pwd])
             .responseJSON { response in
                 if let JSON = response.result.value {
                     let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String

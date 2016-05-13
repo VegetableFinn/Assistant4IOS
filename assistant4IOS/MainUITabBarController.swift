@@ -42,10 +42,15 @@ class MainUITabBarController: UITabBarController, UITabBarControllerDelegate {
             let dailyTableViewController = navController.viewControllers[0] as! DailyTableViewController
             dailyTableViewController.refreshData()
         }
-        if(self.selectedIndex == 0 && beforeIndex == 0){
+        else if(self.selectedIndex == 0 && beforeIndex == 0){
             let navController = viewController as! UINavigationController
             let tableController = navController.viewControllers[0] as! TodoTableViewController
             tableController.refreshToDoData()
+        }
+        else if(self.selectedIndex == 2 && beforeIndex == 2){
+            let navController = viewController as! UINavigationController
+            let tableController = navController.viewControllers[0] as! PlanTableViewController
+            tableController.refreshData()
         }
     }
 
