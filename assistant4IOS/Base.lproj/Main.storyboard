@@ -472,7 +472,7 @@
         <scene sceneID="Mma-BB-tVp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="35w-Cd-CuP" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="计划安排" id="bVq-fD-Ldm"/>
+                    <tabBarItem key="tabBarItem" title="计划安排" image="tab_bar_plan_img" id="bVq-fD-Ldm"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="EtZ-r0-A9a">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -489,6 +489,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="tab_bar_plan_img" width="22" height="22"/>
         <image name="tab_bar_schedule_img" width="25" height="25"/>
         <image name="tab_bar_settings_img" width="25" height="25"/>
         <image name="tab_bar_todo_img" width="25" height="25"/>

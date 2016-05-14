@@ -35,7 +35,7 @@ class PlanTableViewController: UITableViewController {
         Alamofire.request(.GET, "http://45.32.10.131/plan/getActivePlans.json", parameters: nil)
             .responseJSON { response in
                 if let JSON = response.result.value {
-//                  print("JSON: \(JSON)")
+                  //print("JSON: \(JSON)")
                     let errorMessage = (JSON["errorMessageEnum"] is NSNull) || (JSON["errorMessageEnum"] == nil) ? "" : JSON["errorMessageEnum"] as! String
                     if errorMessage == "LOGIN_REQUIRED" {
                         self.needLogin()
@@ -50,7 +50,8 @@ class PlanTableViewController: UITableViewController {
                         let content = model["content"] as! String
                         let progress = model["progress"] as! String
                         let percent = model["percent"] as! String
-                        let planModel = PlanModel(id: id, content: content, progress: progress, percent: percent)
+                        let isRuning = model["runing"] as! Bool
+                        let planModel = PlanModel(id: id, content: content, progress: progress, percent: percent, isRuning: isRuning)
                     
                         self.planModels.append(planModel)
                     }
@@ -85,6 +86,20 @@ class PlanTableViewController: UITableViewController {
         cell.titileLabel.text = model.content;
         cell.processLabel.text = model.progress;
         cell.percentLabel.text = model.percent;
+        if(model.isRuning){
+            cell.layer.backgroundColor = UIColor.lightGrayColor().CGColor
+        }else{
+            cell.layer.backgroundColor = UIColor.whiteColor().CGColor
+        }
+        if(model.percentDouble == 0){
+            cell.percentLabel.textColor = UIColor.redColor()
+        }else if (model.percentDouble < 50){
+            cell.percentLabel.textColor = UIColor.orangeColor()
+        }else if (model.percentDouble < 80){
+            cell.percentLabel.textColor = UIColor.blueColor()
+        }else{
+            cell.percentLabel.textColor = UIColor.greenColor()
+        }
         return cell
     }
     
